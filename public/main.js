@@ -19,7 +19,7 @@ btn.addEventListener("click", () => {
 
 // listen to the emit from server
 socket.on("chatServer", data => {
-  console.log("server", data);
+ feedback.innerHTML = "";
   output.innerHTML +=
     "<p><strong>" + data.handle + ": </strong>" + data.message + "</p>";
 });
