@@ -15,6 +15,14 @@ app.use(express.static("public"));
 var io = socket(server);
 
 // every client will have his own socket
+// listen to the connection
 io.on("connection", socket => {
   console.log("socket connection has made", socket.id);
+
+  // will listen to the emit data with name chat
+  socket.on("chatClient", data => {
+    console.log("client", data);
+    // send data to all client
+    io.sockets.emit("chatServer", data);
+  });
 });
