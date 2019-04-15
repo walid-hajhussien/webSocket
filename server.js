@@ -25,4 +25,8 @@ io.on("connection", socket => {
     // send data to all client
     io.sockets.emit("chatServer", data);
   });
+
+  socket.on("startTyping", data => {
+    socket.broadcast.emit("clientTyping", data.name);
+  });
 });
